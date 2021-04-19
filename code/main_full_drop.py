@@ -104,7 +104,7 @@ with doc.create(TikZ()) as pic:
         partition = partitions[t]
         in_partition = (z // S) == partition
         color = 'white' if mask[z] else "black"
-        size = dsize if mask[z] else ssize
+        size = dsize #if mask[z] else ssize
         pic.append(TikZDraw(
             [
                 TikZCoordinate(dt * t / T, dz * z / C),
