@@ -43,6 +43,22 @@ doc = Document()
 with doc.create(TikZ()) as pic:
 
     # dropout mask
+    t = 0
+    for z in range(C):
+        color = 'white' if mask[z] else "black"
+        size = dsize
+        pic.append(TikZDraw(
+            [
+                TikZCoordinate(dt * t / T, dz * z / C),
+                'circle',
+            ],
+            options=TikZOptions({
+                "line width": "0.01pt",
+                "fill": color,
+                "radius": size,
+            }),
+        ))
+
     # edges
     for t0,t1,z0,z1 in edgegrid:
         in0 = (z0 // S) == partitions[t0]
